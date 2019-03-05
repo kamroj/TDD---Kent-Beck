@@ -12,6 +12,10 @@ public class Dollar {
     }
 
     public boolean equals(Object object) {
-        return true;
+        if (object == null)
+            return false;
+
+        Dollar dollar = (Dollar)object;
+        return amount == dollar.amount;
     }
 }
