@@ -1,13 +1,13 @@
 package currency;
 
-public class Money {
+public abstract class Money {
     protected int amount;
 
-    static Dollar dollar(int amount) {
+    static Money dollar(int amount) {
         return new Dollar(amount);
     }
 
-    static Franc franc(int amount) {
+    static Money franc(int amount) {
         return new Franc(amount);
     }
 
@@ -19,4 +19,6 @@ public class Money {
         return amount == money.amount
                 && getClass().equals(money.getClass());
     }
+
+    abstract Money times(int multiplier);
 }
