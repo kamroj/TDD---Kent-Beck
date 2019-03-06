@@ -2,15 +2,11 @@ package currency;
 
 public class Dollar extends Money {
 
-    public Dollar(int amount) {
-        super.amount = amount;
+    public Dollar(int amount, String currency) {
+        super(amount, currency);
     }
 
     Money times(int multiplier) {
-        return new Dollar(amount * multiplier);
-    }
-
-    String currency() {
-        return "USD";
+        return Money.dollar(amount * multiplier);
     }
 }
