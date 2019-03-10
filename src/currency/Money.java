@@ -1,6 +1,6 @@
 package currency;
 
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -10,11 +10,11 @@ public class Money {
     }
 
     static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
     }
 
     String currency() {
@@ -33,6 +33,15 @@ public class Money {
     Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
+
+    public Money reduce(String to) {
+        return this;
+    }
+
+    Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
 
     public String toString() {
         return amount + " " + currency;
